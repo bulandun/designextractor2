@@ -1,11 +1,52 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://designextractor2.local/schemas/canonical.schema.json",
   "title": "CanonicalDesignSchema",
+  "description": "Builder-agnostic schema extracted from website/image/pdf observations.",
   "type": "object",
   "required": ["meta", "source", "observation", "semantics", "designSystem", "responsive", "builderExports"],
   "properties": {
-    "meta": { "type": "object" },
-    "source": { "type": "object" },
+    "meta": {
+      "type": "object",
+      "required": ["schema_version", "generated_at", "pipeline_version", "source_type", "source_name", "confidence_summary"],
+      "properties": {
+        "schema_version": { "type": "string" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "pipeline_version": { "type": "string" },
+        "source_type": { "type": "string", "enum": ["web", "image", "pdf", "docx_reference"] },
+        "source_name": { "type": "string" },
+        "confidence_summary": {
+          "type": "object",
+          "required": ["overall", "observation", "semantics", "designSystem"],
+          "properties": {
+            "overall": { "type": "number", "minimum": 0, "maximum": 1 },
+            "observation": { "type": "number", "minimum": 0, "maximum": 1 },
+            "semantics": { "type": "number", "minimum": 0, "maximum": 1 },
+            "designSystem": { "type": "number", "minimum": 0, "maximum": 1 },
+            "responsive": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["input_type", "original_dimensions"],
+      "properties": {
+        "input_type": { "type": "string" },
+        "original_dimensions": {
+          "type": "object",
+          "required": ["width", "height", "unit"],
+          "properties": {
+            "width": { "type": "number" },
+            "height": { "type": "number" },
+            "unit": { "type": "string", "enum": ["px", "pt"] }
+          }
+        },
+        "page_count": { "type": "number" },
+        "url": { "type": "string" },
+        "reference_documents": { "type": "array" }
+      }
+    },
     "observation": { "$ref": "./observed-layout.schema.json" },
     "semantics": { "$ref": "./semantic-layout.schema.json" },
     "designSystem": { "$ref": "./design-system.schema.json" },
