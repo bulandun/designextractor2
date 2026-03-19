@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CanonicalDesignSchema",
+  "type": "object",
+  "required": ["meta", "source", "observation", "semantics", "designSystem", "responsive", "builderExports"],
+  "properties": {
+    "meta": { "type": "object" },
+    "source": { "type": "object" },
+    "observation": { "$ref": "./observed-layout.schema.json" },
+    "semantics": { "$ref": "./semantic-layout.schema.json" },
+    "designSystem": { "$ref": "./design-system.schema.json" },
+    "responsive": { "type": "object" },
+    "builderExports": { "$ref": "./builder-export.schema.json" }
+  }
+}

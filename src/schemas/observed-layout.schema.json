@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ObservedLayout",
+  "type": "object",
+  "required": ["pages", "regions", "text_nodes", "images", "controls", "visual_groups"],
+  "properties": {
+    "pages": { "type": "array", "items": { "$ref": "#/$defs/page" } },
+    "regions": { "type": "array", "items": { "$ref": "#/$defs/node" } },
+    "text_nodes": { "type": "array", "items": { "$ref": "#/$defs/node" } },
+    "images": { "type": "array", "items": { "$ref": "#/$defs/node" } },
+    "controls": { "type": "array", "items": { "$ref": "#/$defs/node" } },
+    "visual_groups": { "type": "array", "items": { "$ref": "#/$defs/node" } }
+  },
+  "$defs": {
+    "bbox": {
+      "type": "object",
+      "required": ["x", "y", "width", "height", "unit"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "unit": { "enum": ["px", "pt", "%"] }
+      }
+    },
+    "page": {
+      "type": "object",
+      "required": ["id", "index", "viewport", "confidence"],
+      "properties": {
+        "id": { "type": "string" },
+        "index": { "type": "integer" },
+        "viewport": { "$ref": "#/$defs/bbox" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "bbox", "type", "confidence"],
+      "properties": {
+        "id": { "type": "string" },
+        "bbox": { "$ref": "#/$defs/bbox" },
+        "type": { "type": "string" },
+        "raw_text": { "type": "string" },
+        "style_guess": { "type": "object" },
+        "alignment": { "type": "object" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}
