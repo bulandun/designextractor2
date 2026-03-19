@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuilderExports",
+  "type": "object",
+  "properties": {
+    "lovable": { "type": ["object", "null"] },
+    "react": { "type": ["object", "null"] },
+    "builderio": { "type": ["object", "null"] },
+    "webflow": { "type": ["object", "null"] }
+  }
+}

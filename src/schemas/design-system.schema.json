@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DesignSystem",
+  "type": "object",
+  "required": [
+    "colorTokens",
+    "typeTokens",
+    "spacingTokens",
+    "radiusTokens",
+    "shadowTokens",
+    "layoutTokens",
+    "componentPatterns",
+    "variants",
+    "interactionHints"
+  ],
+  "properties": {
+    "colorTokens": { "type": "array", "items": { "$ref": "#/$defs/token" } },
+    "typeTokens": { "type": "array", "items": { "$ref": "#/$defs/token" } },
+    "spacingTokens": { "type": "array", "items": { "$ref": "#/$defs/token" } },
+    "radiusTokens": { "type": "array", "items": { "$ref": "#/$defs/token" } },
+    "shadowTokens": { "type": "array", "items": { "$ref": "#/$defs/token" } },
+    "layoutTokens": { "type": "array", "items": { "$ref": "#/$defs/token" } },
+    "componentPatterns": { "type": "array", "items": { "type": "object" } },
+    "variants": { "type": "array", "items": { "type": "object" } },
+    "interactionHints": { "type": "array", "items": { "type": "object" } }
+  },
+  "$defs": {
+    "token": {
+      "type": "object",
+      "required": ["name", "value", "confidence"],
+      "properties": {
+        "name": { "type": "string" },
+        "value": {},
+        "usage": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

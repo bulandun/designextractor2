@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "schema_version": "1.0.0",
+    "generated_at": "2026-03-19T00:00:00.000Z",
+    "pipeline_version": "0.1.0",
+    "source_type": "image",
+    "source_name": "landing.png",
+    "confidence_summary": {
+      "overall": 0.84,
+      "observation": 0.91,
+      "semantics": 0.83,
+      "designSystem": 0.78
+    }
+  },
+  "source": {
+    "input_type": "image",
+    "original_dimensions": { "width": 1440, "height": 3000, "unit": "px" }
+  },
+  "observation": {
+    "pages": [
+      {
+        "id": "page_1",
+        "index": 0,
+        "viewport": { "x": 0, "y": 0, "width": 1440, "height": 3000, "unit": "px" },
+        "confidence": 0.99
+      }
+    ],
+    "regions": [],
+    "text_nodes": [],
+    "images": [],
+    "controls": [],
+    "visual_groups": []
+  },
+  "semantics": {
+    "sections": [],
+    "inferred_role_map": {},
+    "reading_order": ["page_1"],
+    "relationships": [],
+    "page_template_type": { "value": "unknown", "confidence": 0.2 }
+  },
+  "designSystem": {
+    "colorTokens": [],
+    "typeTokens": [],
+    "spacingTokens": [],
+    "radiusTokens": [],
+    "shadowTokens": [],
+    "layoutTokens": [],
+    "componentPatterns": [],
+    "variants": [],
+    "interactionHints": []
+  },
+  "responsive": {
+    "breakpoints": [
+      { "name": "sm", "max_width": 639 },
+      { "name": "md", "min_width": 640, "max_width": 1023 },
+      { "name": "lg", "min_width": 1024 }
+    ],
+    "stacking_rules": [],
+    "container_rules": [],
+    "hide_show_behavior": [],
+    "typography_scaling": [],
+    "spacing_scaling": []
+  },
+  "builderExports": {
+    "react": {
+      "version": "0.1.0",
+      "componentTree": [],
+      "tokens": { "colors": [], "typography": [], "spacing": [] }
+    }
+  }
+}
