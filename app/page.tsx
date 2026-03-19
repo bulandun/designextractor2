@@ -5,7 +5,7 @@ import { PreviewRenderer } from './preview/PreviewRenderer';
 import type { CanonicalDesignSchema } from '../src/pipeline/types';
 
 type InputType = 'pdf' | 'image' | 'web';
-type OutputMode = 'json' | 'preview' | 'split';
+type OutputMode = 'json' | 'structural' | 'styled' | 'split';
 
 type ApiPayload = {
   inputType: InputType;
@@ -103,7 +103,7 @@ export default function HomePage() {
       {result ? (
         <section className="output-shell">
           <div className="view-toggle" role="tablist" aria-label="Output view mode">
-            {(['json', 'preview', 'split'] as const).map((mode) => (
+            {(['json', 'structural', 'styled', 'split'] as const).map((mode) => (
               <button
                 key={mode}
                 type="button"
@@ -111,15 +111,23 @@ export default function HomePage() {
                 className={outputMode === mode ? 'active' : ''}
                 aria-pressed={outputMode === mode}
               >
-                {mode === 'json' ? 'JSON view' : mode === 'preview' ? 'Preview view' : 'Split view'}
+                {mode === 'json'
+                  ? 'JSON mode'
+                  : mode === 'structural'
+                    ? 'Structural Preview'
+                    : mode === 'styled'
+                      ? 'Styled Preview'
+                      : 'Split View'}
               </button>
             ))}
           </div>
 
           <div className={`output-grid output-${outputMode}`}>
             {(outputMode === 'json' || outputMode === 'split') && <pre>{JSON.stringify(result, null, 2)}</pre>}
-            {(outputMode === 'preview' || outputMode === 'split') &&
-              (schema ? <PreviewRenderer schema={schema} /> : <p>Preview unavailable: result is not a canonical schema.</p>)}
+            {(outputMode === 'structural' || outputMode === 'split') &&
+              (schema ? <PreviewRenderer schema={schema} mode="structural" /> : <p>Preview unavailable: result is not a canonical schema.</p>)}
+            {(outputMode === 'styled' || outputMode === 'split') &&
+              (schema ? <PreviewRenderer schema={schema} mode="styled" /> : <p>Preview unavailable: result is not a canonical schema.</p>)}
           </div>
         </section>
       ) : null}
