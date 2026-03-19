@@ -11,7 +11,7 @@ body {
 }
 
 main {
-  max-width: 860px;
+  max-width: 1200px;
   margin: 0 auto;
   background: white;
   border: 1px solid #e5e7eb;
@@ -47,12 +47,52 @@ button {
   cursor: pointer;
 }
 
-pre {
+.output-shell {
   margin-top: 1rem;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.view-toggle button {
+  background: white;
+  color: #1e3a8a;
+}
+
+.view-toggle button.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+.output-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.output-split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.output-json,
+.output-preview {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+pre {
+  margin: 0;
   padding: 1rem;
   border-radius: 10px;
   background: #0b1020;
   color: #e5ecff;
   overflow: auto;
-  max-height: 480px;
+  max-height: 720px;
+}
+
+@media (max-width: 1023px) {
+  .output-split {
+    grid-template-columns: 1fr;
+  }
 }
